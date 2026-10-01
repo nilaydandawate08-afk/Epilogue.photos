@@ -1,0 +1,54 @@
+<h1>📸 Epilogue Photos</h1>
+
+<p>Capture a memory from the farewell!</p>
+
+<button type="button" onclick="document.getElementById('photoInput').click()">
+  📸 Take Photo
+</button>
+
+<input
+  id="photoInput"
+  type="file"
+  accept="image/*"
+  capture="environment"
+  style="display: none;"
+>
+<p>Choose the camera above to take a photo.</p>
+<script>
+const photoInput = document.querySelector('input[type="file"]');
+
+photoInput.addEventListener('change', async function () {
+  const file = this.files[0];
+
+  if (!file) return;
+
+  alert("Uploading your photo... 📸");
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "Epilogue.photos");
+
+  try {
+    const response = await fetch(
+      "https://api.cloudinary.com/v1_1/vp7r7uut/image/upload",
+      {
+        method: "POST",
+        body: formData
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.secure_url) {
+      alert("Photo uploaded successfully! 🎉");
+      console.log(data.secure_url);
+    } else {
+      alert("Upload failed. 😕");
+      console.log(data);
+    }
+  } catch (error) {
+    alert("Something went wrong with the upload.");
+    console.error(error);
+  }
+});
+</script>
