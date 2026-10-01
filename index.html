@@ -1,166 +1,212 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  <title>Epilogue Photos</title>
 
-  background:
-    radial-gradient(circle at 50% 20%, rgba(100, 70, 160, 0.35), transparent 45%),
-    radial-gradient(circle at 20% 80%, rgba(70, 90, 150, 0.25), transparent 40%),
-    #080b18;
+  <!-- Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
-  color: white;
-  font-family: "Playfair Display", Georgia, serif;
-}
-  h1 {
-  font-size: 3rem;
-  font-weight: 600;
-  letter-spacing: 4px;
-  margin-bottom: 12px;
-  text-shadow:
-    0 0 10px rgba(255,255,255,0.35),
-    0 0 30px rgba(150,120,255,0.35);
-  animation: titleAppear 1.5s ease-out;
-}
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
 
-p {
-  font-size: 1.15rem;
-  opacity: 0.85;
-  letter-spacing: 1px;
-  animation: subtitleAppear 2s ease-out;
-}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
 
-@keyframes titleAppear {
-  from {
-    opacity: 0;
-    transform: translateY(-25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+      background:
+        radial-gradient(
+          circle at 50% 20%,
+          rgba(100, 70, 160, 0.35),
+          transparent 45%
+        ),
+        radial-gradient(
+          circle at 20% 80%,
+          rgba(70, 90, 150, 0.25),
+          transparent 40%
+        ),
+        #080b18;
 
-@keyframes subtitleAppear {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 0.85;
-    transform: translateY(0);
-  }
-}
-  button {
-  margin-top: 25px;
-  padding: 15px 32px;
+      color: white;
 
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-
-  color: white;
-  background: rgba(90, 70, 150, 0.35);
-
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 50px;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 0 15px rgba(150, 120, 255, 0.3);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
-
-  animation: buttonAppear 2.5s ease-out;
-}
-
-button:hover {
-  transform: translateY(-3px) scale(1.04);
-
-  background: rgba(120, 90, 190, 0.5);
-
-  box-shadow:
-    0 0 20px rgba(180, 150, 255, 0.55),
-    0 0 40px rgba(120, 90, 200, 0.3);
-}
-
-button:active {
-  transform: scale(0.96);
-}
-
-@keyframes buttonAppear {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>
-<h1>📸 Epilogue Photos</h1>
-
-<p>Capture a memory from the farewell!</p>
-
-<button type="button" onclick="document.getElementById('photoInput').click()">
-  📸 Take Photo
-</button>
-
-<input
-  id="photoInput"
-  type="file"
-  accept="image/*"
-  capture="environment"
-  style="display: none;"
->
-<p>Choose the camera above to take a photo.</p>
-<script>
-const photoInput = document.querySelector('input[type="file"]');
-
-photoInput.addEventListener('change', async function () {
-  const file = this.files[0];
-
-  if (!file) return;
-
-  alert("Uploading your photo... 📸");
-
-  const formData = new FormData();
-  formData.append("file", file);
-  formData.append("upload_preset", "Epilogue.photos");
-
-  try {
-    const response = await fetch(
-      "https://api.cloudinary.com/v1_1/vp7r7uut/image/upload",
-      {
-        method: "POST",
-        body: formData
-      }
-    );
-
-    const data = await response.json();
-
-    if (data.secure_url) {
-      alert("Photo uploaded successfully! 🎉");
-      console.log(data.secure_url);
-    } else {
-      alert("Upload failed. 😕");
-      console.log(data);
+      font-family: "Playfair Display", Georgia, serif;
     }
-  } catch (error) {
-    alert("Something went wrong with the upload.");
-    console.error(error);
-  }
-});
-</script>
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      margin-bottom: 12px;
+
+      text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.35),
+        0 0 30px rgba(150, 120, 255, 0.35);
+
+      animation: titleAppear 1.5s ease-out;
+    }
+
+    p {
+      font-size: 1.15rem;
+      opacity: 0.85;
+      letter-spacing: 1px;
+
+      animation: subtitleAppear 2s ease-out;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 15px 32px;
+
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+
+      color: white;
+      background: rgba(90, 70, 150, 0.35);
+
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50px;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 0 15px rgba(150, 120, 255, 0.3);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+
+      animation: buttonAppear 2.5s ease-out;
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.04);
+
+      background: rgba(120, 90, 190, 0.5);
+
+      box-shadow:
+        0 0 20px rgba(180, 150, 255, 0.55),
+        0 0 40px rgba(120, 90, 200, 0.3);
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    @keyframes titleAppear {
+      from {
+        opacity: 0;
+        transform: translateY(-25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes subtitleAppear {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 0.85;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes buttonAppear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+    <h1>📸 Epilogue Photos</h1>
+
+    <p>Capture a memory from the farewell!</p>
+
+    <button
+      type="button"
+      onclick="document.getElementById('photoInput').click()"
+    >
+      📸 Take Photo
+    </button>
+
+    <input
+      id="photoInput"
+      type="file"
+      accept="image/*"
+      capture="environment"
+      style="display: none;"
+    >
+
+    <p>Choose the camera above to take a photo.</p>
+  </main>
+
+  <script>
+    const photoInput = document.getElementById("photoInput");
+
+    photoInput.addEventListener("change", async function () {
+      const file = this.files[0];
+
+      if (!file) return;
+
+      alert("Uploading your photo... 📸");
+
+      const formData = new FormData();
+
+      formData.append("file", file);
+      formData.append("upload_preset", "Epilogue.photos");
+
+      try {
+        const response = await fetch(
+          "https://api.cloudinary.com/v1_1/vp7r7uut/image/upload",
+          {
+            method: "POST",
+            body: formData
+          }
+        );
+
+        const data = await response.json();
+
+        if (data.secure_url) {
+          alert("Photo uploaded successfully! 🎉");
+          console.log(data.secure_url);
+        } else {
+          alert("Upload failed. 😕");
+          console.log(data);
+        }
+
+      } catch (error) {
+        alert("Something went wrong with the upload.");
+        console.error(error);
+      }
+    });
+  </script>
+
+</body>
+</html>
