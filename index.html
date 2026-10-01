@@ -1,3 +1,115 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background:
+    radial-gradient(circle at 50% 20%, rgba(100, 70, 160, 0.35), transparent 45%),
+    radial-gradient(circle at 20% 80%, rgba(70, 90, 150, 0.25), transparent 40%),
+    #080b18;
+
+  color: white;
+  font-family: "Playfair Display", Georgia, serif;
+}
+  h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.35),
+    0 0 30px rgba(150,120,255,0.35);
+  animation: titleAppear 1.5s ease-out;
+}
+
+p {
+  font-size: 1.15rem;
+  opacity: 0.85;
+  letter-spacing: 1px;
+  animation: subtitleAppear 2s ease-out;
+}
+
+@keyframes titleAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtitleAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+}
+  button {
+  margin-top: 25px;
+  padding: 15px 32px;
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+
+  color: white;
+  background: rgba(90, 70, 150, 0.35);
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 15px rgba(150, 120, 255, 0.3);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+
+  animation: buttonAppear 2.5s ease-out;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.04);
+
+  background: rgba(120, 90, 190, 0.5);
+
+  box-shadow:
+    0 0 20px rgba(180, 150, 255, 0.55),
+    0 0 40px rgba(120, 90, 200, 0.3);
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+@keyframes buttonAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
 <h1>📸 Epilogue Photos</h1>
 
 <p>Capture a memory from the farewell!</p>
