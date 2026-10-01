@@ -179,6 +179,7 @@ background-attachment: fixed;
 
       formData.append("file", file);
       formData.append("upload_preset", "Epilogue.photos");
+      formData.append("tags", "epilogue");
 
       try {
         const response = await fetch(
