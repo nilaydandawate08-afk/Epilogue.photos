@@ -166,6 +166,12 @@ background-attachment: fixed;
     </button>
     <button
   type="button"
+  onclick="document.getElementById('galleryInput').click()"
+>
+  🖼️ Upload from Gallery
+</button>
+    <button
+  type="button"
   onclick="window.location.href='gallery.html'"
 >
   🖼️ View Gallery
@@ -178,51 +184,68 @@ background-attachment: fixed;
       capture="environment"
       style="display: none;"
     >
+    <input
+  id="galleryInput"
+  type="file"
+  accept="image/*"
+  style="display: none;"
+>
 
     <p>Choose the camera above to take a photo.</p>
   </main>
 
-  <script>
-    const photoInput = document.getElementById("photoInput");
+ <script>
+  const photoInput = document.getElementById("photoInput");
+  const galleryInput = document.getElementById("galleryInput");
 
-    photoInput.addEventListener("change", async function () {
-      const file = this.files[0];
+  async function uploadPhoto(file) {
 
-      if (!file) return;
+    if (!file) return;
 
-      alert("Uploading your photo... 📸");
+    alert("Uploading your photo... 📸");
 
-      const formData = new FormData();
+    const formData = new FormData();
 
-      formData.append("file", file);
-      formData.append("upload_preset", "Epilogue.photos");
-      formData.append("tags", "epilogue");
+    formData.append("file", file);
+    formData.append("upload_preset", "Epilogue.photos");
+    formData.append("tags", "epilogue");
 
-      try {
-        const response = await fetch(
-          "https://api.cloudinary.com/v1_1/vp7r7uut/image/upload",
-          {
-            method: "POST",
-            body: formData
-          }
-        );
+    try {
 
-        const data = await response.json();
-
-        if (data.secure_url) {
-          alert("Photo uploaded successfully! 🎉");
-          console.log(data.secure_url);
-        } else {
-          alert("Upload failed. 😕");
-          console.log(data);
+      const response = await fetch(
+        "https://api.cloudinary.com/v1_1/vp7r7uut/image/upload",
+        {
+          method: "POST",
+          body: formData
         }
+      );
 
-      } catch (error) {
-        alert("Something went wrong with the upload.");
-        console.error(error);
+      const data = await response.json();
+
+      if (data.secure_url) {
+        alert("Photo uploaded successfully! 🎉");
+        console.log(data.secure_url);
+      } else {
+        alert("Upload failed. 😕");
+        console.log(data);
       }
-    });
-  </script>
+
+    } catch (error) {
+
+      alert("Something went wrong with the upload.");
+      console.error(error);
+
+    }
+  }
+
+  photoInput.addEventListener("change", function () {
+    uploadPhoto(this.files[0]);
+  });
+
+  galleryInput.addEventListener("change", function () {
+    uploadPhoto(this.files[0]);
+  });
+</script>
 
 </body>
 </html>
