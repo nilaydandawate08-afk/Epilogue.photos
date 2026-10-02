@@ -188,6 +188,7 @@ background-attachment: fixed;
   id="galleryInput"
   type="file"
   accept="image/*"
+  multiple
   style="display: none;"
 >
 
@@ -243,8 +244,10 @@ background-attachment: fixed;
   });
 
   galleryInput.addEventListener("change", function () {
-    uploadPhoto(this.files[0]);
-  });
+  for (const file of this.files) {
+    uploadPhoto(file);
+  }
+});
 </script>
 
 </body>
